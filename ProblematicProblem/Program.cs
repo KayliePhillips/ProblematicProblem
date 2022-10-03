@@ -50,7 +50,7 @@ namespace ProblematicProblem
             
                 while (userAgeParse != true)
                 {
-                    Console.WriteLine("Invalid input.  Please enter a number");
+                    Console.Write("Invalid input.  Please enter a number");
                     userAgeParse = int.TryParse(Console.ReadLine(), out userAge);
                 }
 
@@ -63,7 +63,7 @@ namespace ProblematicProblem
 
             while (seeList != "yes" && seeList != "no")
             {
-                Console.WriteLine("Invalid answer.  Please answer yes or no.");
+                Console.Write("Invalid answer.  Please answer yes or no.");
                 seeList = Console.ReadLine().ToLower();
             }
 
@@ -86,7 +86,7 @@ namespace ProblematicProblem
 
             while (addToList != "yes" && addToList != "no")
             {
-                Console.WriteLine("Invalid answer.  Please answer yes or no.");
+                Console.Write("Invalid answer.  Please answer yes or no.");
                 addToList = Console.ReadLine().ToLower();
             }
 
@@ -116,9 +116,9 @@ namespace ProblematicProblem
                                
             }
 
-            string anotherChoice = "redo";
-            
-            while (anotherChoice == "redo")
+            string cont = "redo";
+
+            while (cont == "redo")
             {
 
                 Console.Write("Connecting to the database");
@@ -128,10 +128,8 @@ namespace ProblematicProblem
                     Thread.Sleep(500);
                 }
                 Console.WriteLine();
-                Console.WriteLine(); 
+                Console.WriteLine();
                 Console.Write("Choosing your random activity");
-                
-
 
                 for (int i = 0; i < 9; i++)
                 {
@@ -150,21 +148,23 @@ namespace ProblematicProblem
                     Console.WriteLine("Please pick something else!");
                     activities.Remove(randomActivity);
                     randomNumber = rng.Next(activities.Count);
-                    //string randomActivity = activities[randomNumber];
+                    
                 }
                 Console.WriteLine();
                 Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! " +
                     $"Is this ok or do you want to grab another activity? Keep/Redo: ");
-                anotherChoice = Console.ReadLine().ToLower();
+                cont = Console.ReadLine().ToLower();
                 Console.WriteLine();
-                //cont = bool.Parse(Console.ReadLine());
 
+                while (cont != "keep" && cont != "redo")
+                {
+                    Console.WriteLine("Invalid answer.  Please answer keep or redo.");
+                    cont = Console.ReadLine().ToLower();
+                }
+                
             }
             
-            
-            
         }
-
 
     }
 }
